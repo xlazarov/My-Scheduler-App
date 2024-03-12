@@ -1,4 +1,4 @@
-package com.example.myalarmapp.db.dao
+package com.example.myalarmapp
 
 import androidx.room.Delete
 import androidx.room.Insert

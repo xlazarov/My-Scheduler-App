@@ -1,4 +1,4 @@
-package com.example.myalarmapp.presentation.components
+package com.example.myalarmapp.alarm.ui.components
 
 import android.util.Log
 import androidx.compose.foundation.background
@@ -14,7 +14,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -84,7 +83,7 @@ fun NumberPicker(
         1f to Color.Transparent,
         1f to MaterialTheme.colorScheme.secondaryContainer
     )
-    val size = 60.dp
+    val size = 100.dp
     val listState =
         rememberLazyListState(initialFirstVisibleItemIndex = firstVisibleNumber + numbers.size * 2)
 

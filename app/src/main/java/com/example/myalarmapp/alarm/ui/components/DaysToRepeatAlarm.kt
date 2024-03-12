@@ -1,4 +1,4 @@
-package com.example.myalarmapp.presentation.components
+package com.example.myalarmapp.alarm.ui.components
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -28,7 +28,7 @@ fun DaysToRepeatAlarm(
     onDaySelected: (String) -> Unit
 ) {
     Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-        Text(text = "Repeat", fontSize = 24.sp, color = MaterialTheme.colorScheme.secondary)
+        Text(text = "Repeat", fontSize = 18.sp, color = MaterialTheme.colorScheme.secondary)
     }
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -46,13 +46,13 @@ fun DaysToRepeatAlarm(
             )
             Box(
                 modifier = Modifier
-                    .size(30.dp)
+                    .size(48.dp)
                     .clip(CircleShape)
                     .border(1.dp, borderColor, CircleShape)
                     .clickable { onDaySelected(day.name) },
                 contentAlignment = Alignment.Center
             ) {
-                Text(text = "${day.name.first()}", color = textColor, fontSize = 20.sp)
+                Text(text = "${day.name.first()}", color = textColor, fontSize = 28.sp)
             }
         }
     }

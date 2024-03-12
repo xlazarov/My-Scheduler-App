@@ -1,9 +1,9 @@
-package com.example.myalarmapp.di
+package com.example.myalarmapp.alarm.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.myalarmapp.db.AlarmDatabase
-import com.example.myalarmapp.db.dao.AlarmDao
+import com.example.myalarmapp.alarm.db.AlarmDatabase
+import com.example.myalarmapp.alarm.db.AlarmDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,6 +27,6 @@ object DatabaseModule {
             appContext,
             AlarmDatabase::class.java,
             "alarms.db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 }

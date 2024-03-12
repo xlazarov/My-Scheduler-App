@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.myalarmapp.data.AlarmViewModel
+import com.example.myalarmapp.alarm.data.AlarmViewModel
 
 @Composable
 fun WelcomeScreen(

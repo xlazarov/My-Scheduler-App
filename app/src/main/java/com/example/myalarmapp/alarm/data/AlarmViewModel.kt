@@ -1,4 +1,4 @@
-package com.example.myalarmapp.data
+package com.example.myalarmapp.alarm.data
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -26,6 +26,10 @@ class AlarmViewModel @Inject constructor(
                 _alarms.value = alarms
             }
         }
+    }
+
+    fun getAlarmById(alarmId: Long): Alarm? {
+        return _alarms.value.find { it.id == alarmId }
     }
 
     fun insertAlarm(alarm: Alarm) {

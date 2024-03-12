@@ -1,13 +1,10 @@
-package com.example.myalarmapp.screens
+package com.example.myalarmapp.alarm.ui
 
-import android.util.Log
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.twotone.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
@@ -17,7 +14,6 @@ import androidx.compose.material3.SwipeToDismissBox
 import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -25,13 +21,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.myalarmapp.Screen
 import com.example.myalarmapp.R
-import com.example.myalarmapp.Screens
-import com.example.myalarmapp.data.AlarmViewModel
-import com.example.myalarmapp.presentation.components.AlarmItem
-import com.example.myalarmapp.presentation.components.DismissBackground
-import com.example.myalarmapp.presentation.components.NavigationBottomBar
-import com.example.myalarmapp.utils.screenDimensionDp
+import com.example.myalarmapp.alarm.data.AlarmViewModel
+import com.example.myalarmapp.alarm.ui.components.AlarmItem
+import com.example.myalarmapp.alarm.ui.components.DismissBackground
+import com.example.myalarmapp.alarm.ui.components.NavigationBottomBar
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -40,13 +35,13 @@ fun AlarmScreen(
     viewModel: AlarmViewModel = hiltViewModel(),
     navController: NavController,
 ) {
-    val alarms by viewModel.alarms.collectAsState(initial = emptyList())
+    val alarms by viewModel.alarms.collectAsState()
 
     Scaffold(
         bottomBar = { NavigationBottomBar() },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { navController.navigate(Screens.SetAlarm.route) },
+                onClick = { navController.navigate(Screen.SetAlarm.route) },
                 modifier = Modifier.clip(CircleShape)
             ) {
                 Icon(
@@ -62,7 +57,10 @@ fun AlarmScreen(
                 .fillMaxWidth()
                 .padding(it)
         ) {
-            items(alarms) { alarm ->
+            items(
+                items = alarms,
+                key = { item -> item.id }
+            ) { alarm ->
                 val state = rememberSwipeToDismissBoxState(
                     confirmValueChange = { value ->
                         if (value == SwipeToDismissBoxValue.EndToStart) {
@@ -81,7 +79,7 @@ fun AlarmScreen(
                         alarm = alarm,
                         onClick = {
                             navController.navigate(
-                                Screens.SetAlarm.route.replace(
+                                Screen.SetAlarm.route.replace(
                                     "{alarmId}",
                                     alarm.id.toString()
                                 )

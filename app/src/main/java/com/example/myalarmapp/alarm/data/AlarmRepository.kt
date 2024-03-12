@@ -1,6 +1,6 @@
-package com.example.myalarmapp.data
+package com.example.myalarmapp.alarm.data
 
-import com.example.myalarmapp.db.dao.AlarmDao
+import com.example.myalarmapp.alarm.db.AlarmDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
@@ -17,11 +17,9 @@ class AlarmRepository @Inject constructor(private val alarmDao: AlarmDao) {
     }
 
     suspend fun getAllAlarms(): Flow<List<Alarm>> {
-        var allAlarms: Flow<List<Alarm>>
-        withContext(Dispatchers.IO) {
-            allAlarms = alarmDao.getAllAlarms()
+        return withContext(Dispatchers.IO) {
+            alarmDao.getAllAlarms()
         }
-        return allAlarms
     }
 
     suspend fun updateAlarm(alarm: Alarm) {
@@ -33,6 +31,12 @@ class AlarmRepository @Inject constructor(private val alarmDao: AlarmDao) {
     suspend fun deleteAlarm(alarm: Alarm) {
         withContext(Dispatchers.IO) {
             alarmDao.delete(alarm)
+        }
+    }
+
+    suspend fun getAlarmById(alarmId: Long): Alarm? {
+        return withContext(Dispatchers.IO) {
+            alarmDao.getAlarmById(alarmId)
         }
     }
 }

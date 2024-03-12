@@ -1,4 +1,4 @@
-package com.example.myalarmapp.presentation.components
+package com.example.myalarmapp.alarm.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.RoundedCornerShape
