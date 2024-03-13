@@ -1,8 +1,8 @@
 # My Scheduler App
 
-This is an ongoing project crafted to nurture my growth in Android app development🌱✨✨
+This is an ongoing project I started to nurture my growth in Android app development🌱✨✨
 
-## 🚀 Introduction
+## 🚀 Introduction 
 
 My Scheduler App aims to provide users with a comprehensive tool for managing their alarms, schedules, notes, checklists, etc. within a single, intuitive interface. With a focus on simplicity and usability, the app is designed to streamline daily organization and enhance productivity.
 
@@ -14,7 +14,7 @@ My Scheduler App aims to provide users with a comprehensive tool for managing th
 - ⏰ **Alarms**: Set alarms for important events or tasks to ensure you never miss a deadline.
 - 🔔 **Reminders**: Set reminders for important events or tasks to ensure you never miss a deadline.
 
-## ⚙️ Technologies Used
+## ⚙️ Technologies Used (So Far)
 
 The following technologies have been used in the development of My Scheduler App so far:
 - **Jetpack Compose**: A modern toolkit for building native Android UI.
@@ -26,7 +26,7 @@ The following technologies have been used in the development of My Scheduler App
 
 This project is currently in progress, with ongoing development and enhancements planned for the future.
 
-## 📬 Feedback
+## 📬 Feedback (Diss Me)
 
 Your feedback is essential to the improvement of My Scheduler App. If you encounter any issues, have suggestions for new features, or simply want to share your thoughts on the app, please don't hesitate to reach out. You can submit feedback through GitHub issues or contact me directly.
 
