@@ -1,4 +1,4 @@
-package com.example.myalarmapp
+package com.example.myalarmapp.common
 
 import androidx.room.Delete
 import androidx.room.Insert

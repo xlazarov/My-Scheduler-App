@@ -1,6 +1,5 @@
 package com.example.myalarmapp.alarm.ui.components
 
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -40,15 +39,10 @@ fun DaysToRepeatAlarm(
                 newValue = if (selectedDays.contains(day.name)) MaterialTheme.colorScheme.onSecondaryContainer
                 else Color.LightGray
             )
-            val borderColor by rememberUpdatedState(
-                newValue = if (selectedDays.contains(day.name)) MaterialTheme.colorScheme.onSecondaryContainer
-                else Color.Transparent
-            )
             Box(
                 modifier = Modifier
                     .size(48.dp)
                     .clip(CircleShape)
-                    .border(1.dp, borderColor, CircleShape)
                     .clickable { onDaySelected(day.name) },
                 contentAlignment = Alignment.Center
             ) {

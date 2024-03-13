@@ -19,7 +19,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -33,6 +32,7 @@ import com.example.myalarmapp.utils.formatTime
 fun TimePicker(
     hour: Int,
     minute: Int,
+    modifier: Modifier = Modifier,
     onHourChange: (Int) -> Unit,
     onMinuteChange: (Int) -> Unit
 ) {
@@ -41,8 +41,10 @@ fun TimePicker(
     Log.i("TimePicker", "first visible h: $hour, m: $minute")
 
     Row(
-        modifier = Modifier
+        modifier = modifier
+            .fadingEdgeGradient(MaterialTheme.colorScheme.secondaryContainer)
             .background(MaterialTheme.colorScheme.secondaryContainer)
+            .height(100.dp)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.Center
     ) {
@@ -58,7 +60,7 @@ fun TimePicker(
             Text(
                 text = "  |  ",
                 color = MaterialTheme.colorScheme.onSecondaryContainer,
-                fontSize = 26.sp
+                fontSize = 32.sp
             )
             NumberPicker(
                 numbers = minutes,
@@ -73,28 +75,16 @@ fun TimePicker(
 fun NumberPicker(
     firstVisibleNumber: Int,
     numbers: List<Int>,
+    modifier: Modifier = Modifier,
     onValueChange: (Int) -> Unit
 ) {
-    Log.i("NumberPicker", "first visible: $firstVisibleNumber")
-
-    val fadingEdgeGradient = Brush.verticalGradient(
-        1f to MaterialTheme.colorScheme.secondaryContainer,
-        1f to Color.Transparent,
-        1f to Color.Transparent,
-        1f to MaterialTheme.colorScheme.secondaryContainer
-    )
     val size = 100.dp
     val listState =
         rememberLazyListState(initialFirstVisibleItemIndex = firstVisibleNumber + numbers.size * 2)
 
     LazyColumn(
         state = listState,
-        modifier = Modifier
-            .height(size)
-            .drawWithContent {
-                drawContent()
-                drawRect(brush = fadingEdgeGradient, blendMode = BlendMode.DstIn)
-            },
+        modifier = modifier,
         contentPadding = PaddingValues(size / 4),
         flingBehavior = rememberSnapFlingBehavior(lazyListState = listState),
 
@@ -117,5 +107,15 @@ fun NumberPicker(
                 onValueChange(numbers[snappedNumberIndex % numbers.size])
             }
         }
+    }
+}
+
+fun Modifier.fadingEdgeGradient(color: Color): Modifier {
+    val fadingEdgeGradient = Brush.verticalGradient(
+        colors = listOf(color, color.copy(0f), color.copy(0f), color)
+    )
+    return Modifier.drawWithContent {
+        drawContent()
+        drawRect(brush = fadingEdgeGradient, size = size)
     }
 }

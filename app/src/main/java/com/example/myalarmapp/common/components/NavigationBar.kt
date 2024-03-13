@@ -1,4 +1,4 @@
-package com.example.myalarmapp.alarm.ui.components
+package com.example.myalarmapp.common.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,9 +16,9 @@ import androidx.compose.ui.unit.dp
 import com.example.myalarmapp.R
 
 @Composable
-fun NavigationBottomBar() {
+fun NavigationBottomBar(modifier: Modifier = Modifier) {
     NavigationBar(
-        modifier = Modifier
+        modifier = modifier
             .background(
                 color = MaterialTheme.colorScheme.primaryContainer,
                 shape = RoundedCornerShape(topEnd = 10.dp, topStart = 10.dp)

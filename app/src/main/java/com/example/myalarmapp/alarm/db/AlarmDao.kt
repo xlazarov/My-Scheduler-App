@@ -1,7 +1,7 @@
 package com.example.myalarmapp.alarm.db
 
 import androidx.room.*
-import com.example.myalarmapp.BaseDao
+import com.example.myalarmapp.common.BaseDao
 import com.example.myalarmapp.alarm.data.Alarm
 import kotlinx.coroutines.flow.Flow
 

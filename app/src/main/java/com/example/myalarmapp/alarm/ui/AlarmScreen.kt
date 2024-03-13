@@ -26,7 +26,7 @@ import com.example.myalarmapp.R
 import com.example.myalarmapp.alarm.data.AlarmViewModel
 import com.example.myalarmapp.alarm.ui.components.AlarmItem
 import com.example.myalarmapp.alarm.ui.components.DismissBackground
-import com.example.myalarmapp.alarm.ui.components.NavigationBottomBar
+import com.example.myalarmapp.common.components.NavigationBottomBar
 
 
 @OptIn(ExperimentalMaterial3Api::class)

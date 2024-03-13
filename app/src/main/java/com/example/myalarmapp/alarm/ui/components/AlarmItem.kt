@@ -33,6 +33,7 @@ import com.example.myalarmapp.alarm.data.Alarm
 @Composable
 fun AlarmItem(
     alarm: Alarm,
+    modifier: Modifier = Modifier,
     onClick: () -> Unit,
     onAlarmToggle: (Boolean) -> Unit
 ) {
@@ -43,7 +44,7 @@ fun AlarmItem(
     )
 
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(60.dp)
             .background(MaterialTheme.colorScheme.secondaryContainer)
@@ -51,14 +52,11 @@ fun AlarmItem(
             .padding(horizontal = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-
-        Row(
-            modifier = Modifier.weight(1f),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            AlarmTime(alarm = alarm, colorOnOff = colorOnOff)
-        }
-
+        AlarmTime(
+            alarm = alarm,
+            colorOnOff = colorOnOff,
+            modifier = Modifier.weight(1f)
+        )
         AlarmToggleButton(
             alarm = alarm,
             onAlarmToggle = onAlarmToggle,
@@ -68,29 +66,35 @@ fun AlarmItem(
 }
 
 @Composable
-fun AlarmTime(alarm: Alarm, colorOnOff: Color) {
-    Text(
-        text = alarm.hour.toString().padStart(2, '0'),
-        color = colorOnOff,
-        fontSize = 30.sp
-    )
-    Text(
-        text = "  |  ",
-        color = colorOnOff,
-        fontSize = 26.sp
-    )
-    Text(
-        text = alarm.minute.toString().padStart(2, '0'),
-        color = colorOnOff,
-        fontSize = 30.sp
-    )
+fun AlarmTime(alarm: Alarm, colorOnOff: Color, modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = alarm.hour.toString().padStart(2, '0'),
+            color = colorOnOff,
+            fontSize = 30.sp
+        )
+        Text(
+            text = "  |  ",
+            color = colorOnOff,
+            fontSize = 26.sp
+        )
+        Text(
+            text = alarm.minute.toString().padStart(2, '0'),
+            color = colorOnOff,
+            fontSize = 30.sp
+        )
+    }
 }
 
 @Composable
 fun AlarmToggleButton(
     alarm: Alarm,
-    onAlarmToggle: (Boolean) -> Unit,
-    colorOnOff: Color
+    colorOnOff: Color,
+    modifier: Modifier = Modifier,
+    onAlarmToggle: (Boolean) -> Unit
 ) {
     val iconOnOff by rememberUpdatedState(
         newValue =
@@ -98,6 +102,7 @@ fun AlarmToggleButton(
     )
     IconToggleButton(
         checked = alarm.isOn,
+        modifier = modifier,
         onCheckedChange = { isChecked -> onAlarmToggle(isChecked) }
     ) {
         Icon(
