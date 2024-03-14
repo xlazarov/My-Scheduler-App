@@ -1,6 +1,7 @@
 package com.example.myalarmapp.alarm.data
 
 import com.example.myalarmapp.alarm.db.AlarmDao
+import com.example.myalarmapp.common.BaseRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
@@ -8,35 +9,37 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AlarmRepository @Inject constructor(private val alarmDao: AlarmDao) {
+class AlarmRepository @Inject constructor(
+    private val alarmDao: AlarmDao
+) : BaseRepository<Alarm> {
 
-    suspend fun insertAlarm(alarm: Alarm) {
+    override suspend fun insert(item: Alarm) {
         withContext(Dispatchers.IO) {
-            alarmDao.insert(alarm)
+            alarmDao.insert(item)
         }
     }
 
-    suspend fun getAllAlarms(): Flow<List<Alarm>> {
+    override suspend fun getAll(): Flow<List<Alarm>> {
         return withContext(Dispatchers.IO) {
-            alarmDao.getAllAlarms()
+            alarmDao.getAll()
         }
     }
 
-    suspend fun updateAlarm(alarm: Alarm) {
-        withContext(Dispatchers.IO) {
-            alarmDao.update(alarm)
-        }
-    }
-
-    suspend fun deleteAlarm(alarm: Alarm) {
-        withContext(Dispatchers.IO) {
-            alarmDao.delete(alarm)
-        }
-    }
-
-    suspend fun getAlarmById(alarmId: Long): Alarm? {
+    override suspend fun getById(id: Long): Alarm? {
         return withContext(Dispatchers.IO) {
-            alarmDao.getAlarmById(alarmId)
+            alarmDao.getById(id)
+        }
+    }
+
+    override suspend fun delete(item: Alarm) {
+        withContext(Dispatchers.IO) {
+            alarmDao.delete(item)
+        }
+    }
+
+    override suspend fun update(item: Alarm) {
+        withContext(Dispatchers.IO) {
+            alarmDao.update(item)
         }
     }
 }

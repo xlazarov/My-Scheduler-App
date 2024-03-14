@@ -12,11 +12,11 @@ interface AlarmDao : BaseDao<Alarm> {
      * Get all alarms from the Alarms table.
      */
     @Query("SELECT * FROM Alarms")
-    fun getAllAlarms(): Flow<List<Alarm>>
+    fun getAll(): Flow<List<Alarm>>
 
     /**
      * Retrieve an alarm by its alarmId.
      */
     @Query("SELECT * FROM Alarms WHERE id = :alarmId")
-    fun getAlarmById(alarmId: Long): Alarm?
+    fun getById(alarmId: Long): Alarm?
 }
