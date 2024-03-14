@@ -8,10 +8,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.myalarmapp.alarm.data.Alarm
-import com.example.myalarmapp.alarm.data.AlarmViewModel
+import com.example.myalarmapp.alarm.ui.AlarmViewModel
 import com.example.myalarmapp.alarm.ui.AlarmScreen
 import com.example.myalarmapp.alarm.ui.SetAlarmScreen
-import com.example.myalarmapp.screens.WelcomeScreen
 import com.example.myalarmapp.utils.getIdFromBundle
 import kotlinx.coroutines.delay
 
@@ -38,7 +37,7 @@ fun Navigation(
         startDestination = Screen.Alarm.route
     ) {
         composable(route = Screen.Welcome.route) {
-            WelcomeScreen(navController = navController)
+            //WelcomeScreen(navController = navController)
             LaunchedEffect(key1 = Unit) {
                 delay(2000)
                 navController.navigate(Screen.Home.route)
@@ -52,7 +51,7 @@ fun Navigation(
         }
         composable(route = Screen.SetAlarm.route) {
             val alarmId = getIdFromBundle(navController)
-            val alarm = alarmViewModel.getAlarmById(alarmId)
+            val alarm = alarmViewModel.getItemById(alarmId)
 
             if (alarm != null)
                 SetAlarmScreen(alarm = alarm, isNew = false, navController = navController)

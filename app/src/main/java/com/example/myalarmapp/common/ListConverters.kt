@@ -1,8 +1,8 @@
-package com.example.myalarmapp.alarm.db
+package com.example.myalarmapp.common
 
 import androidx.room.TypeConverter
 
-class Converters {
+class ListConverters {
 
     @TypeConverter
     fun fromString(value: String): List<String> {
