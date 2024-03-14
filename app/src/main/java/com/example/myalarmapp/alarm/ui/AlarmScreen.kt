@@ -38,7 +38,7 @@ fun AlarmScreen(
     val alarms by viewModel.alarms.collectAsState()
 
     Scaffold(
-        bottomBar = { NavigationBottomBar() },
+        bottomBar = { NavigationBottomBar(navController) },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { navController.navigate(Screen.SetAlarm.route) },

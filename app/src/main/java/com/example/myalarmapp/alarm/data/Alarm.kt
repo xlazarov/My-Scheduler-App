@@ -13,6 +13,6 @@ data class Alarm(
     val isOn: Boolean = true,
     val daysOfWeek: List<String> = emptyList(),
     val volume: Float = 0.5f,
-    val vibrationOn: Boolean = false,
+    val vibrationOn: Boolean = true,
     val tune: String = "TODO ringtones"
 )

@@ -32,7 +32,9 @@ fun TopBar(
     onDeleteClick: () -> Unit
 ) {
     Box(
-        modifier = modifier.height(68.dp)
+        modifier = modifier
+            .height(68.dp)
+            .padding(bottom = 16.dp)
     ) {
         Column {
             Row(
@@ -53,7 +55,6 @@ fun TopBar(
         ) {
             Text(
                 text = topBarTitle,
-                fontStyle = FontStyle.Italic,
                 fontSize = TextUnit(22.dp.value, TextUnitType.Sp),
                 modifier = Modifier
                     .background(Color.White)

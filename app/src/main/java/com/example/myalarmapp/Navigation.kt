@@ -1,7 +1,5 @@
 package com.example.myalarmapp
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -30,13 +28,11 @@ enum class Screen(val route: String) {
     Reminder("reminder")
 }
 
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 fun Navigation(
     navController: NavHostController = rememberNavController(),
     alarmViewModel: AlarmViewModel = hiltViewModel()
 ) {
-
     NavHost(
         navController = navController,
         startDestination = Screen.Alarm.route

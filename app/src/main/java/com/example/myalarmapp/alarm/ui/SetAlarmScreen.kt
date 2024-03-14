@@ -112,11 +112,9 @@ fun SetAlarmScreen(
                 }
             }
             AlarmSoundSetting(
-                tune = alarm.tune,
-                volume = setVolume,
+                alarm = alarm,
                 onVolumeChange = { volume -> setVolume = volume },
-                vibrationOn = setVibration,
-                onClickToggle = { vibration -> setVibration = vibration }
+                onVibrationToggle = { vibration -> setVibration = vibration }
             )
         }
     }
