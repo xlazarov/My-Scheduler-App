@@ -1,6 +1,9 @@
 package com.example.myalarmapp.common.components
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.twotone.StickyNote2
+import androidx.compose.material.icons.twotone.Alarm
+import androidx.compose.material.icons.twotone.CalendarMonth
 import androidx.compose.material.icons.twotone.Notifications
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -12,10 +15,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.myalarmapp.R
 import com.example.myalarmapp.Screen
 
 @Composable
@@ -37,7 +38,7 @@ fun NavigationBottomBar(navController: NavController, modifier: Modifier = Modif
             },
             icon = {
                 Icon(
-                    painter = painterResource(id = R.drawable.calendar_month_24px),
+                    imageVector = Icons.TwoTone.CalendarMonth,
                     contentDescription = null
                 )
             }
@@ -63,7 +64,7 @@ fun NavigationBottomBar(navController: NavController, modifier: Modifier = Modif
             },
             icon = {
                 Icon(
-                    painter = painterResource(id = R.drawable.alarm_24px),
+                    imageVector = Icons.TwoTone.Alarm,
                     contentDescription = null
                 )
             }
@@ -76,7 +77,7 @@ fun NavigationBottomBar(navController: NavController, modifier: Modifier = Modif
             },
             icon = {
                 Icon(
-                    painter = painterResource(id = R.drawable.sticky_note_2_24px),
+                    imageVector = Icons.AutoMirrored.TwoTone.StickyNote2,
                     contentDescription = null
                 )
             }

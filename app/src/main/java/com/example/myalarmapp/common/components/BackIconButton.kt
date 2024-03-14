@@ -1,7 +1,7 @@
 package com.example.myalarmapp.common.components
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.twotone.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -15,7 +15,7 @@ fun BackIconButton(navController: NavController, modifier: Modifier = Modifier) 
         onClick = { navController.navigateUp() }
     ) {
         Icon(
-            imageVector = Icons.AutoMirrored.TwoTone.ArrowBack,
+            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
             contentDescription = null
         )
     }

@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.AlarmOff
+import androidx.compose.material.icons.rounded.AlarmOn
 import androidx.compose.material.icons.twotone.Delete
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -24,10 +26,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.myalarmapp.R
 import com.example.myalarmapp.alarm.data.Alarm
 
 @Composable
@@ -98,7 +98,7 @@ fun AlarmToggleButton(
 ) {
     val iconOnOff by rememberUpdatedState(
         newValue =
-        if (alarm.isOn) R.drawable.alarm_on_24px else R.drawable.alarm_off_24px
+        if (alarm.isOn) Icons.Rounded.AlarmOn else Icons.Rounded.AlarmOff
     )
     IconToggleButton(
         checked = alarm.isOn,
@@ -106,7 +106,7 @@ fun AlarmToggleButton(
         onCheckedChange = { isChecked -> onAlarmToggle(isChecked) }
     ) {
         Icon(
-            painter = painterResource(id = iconOnOff),
+            imageVector = iconOnOff,
             contentDescription = null,
             modifier = Modifier.scale(1.3f),
             tint = colorOnOff

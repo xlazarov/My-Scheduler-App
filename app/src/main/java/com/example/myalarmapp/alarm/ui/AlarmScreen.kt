@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.AlarmAdd
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
@@ -18,16 +20,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.myalarmapp.Screen
-import com.example.myalarmapp.R
-import com.example.myalarmapp.alarm.data.AlarmViewModel
 import com.example.myalarmapp.alarm.ui.components.AlarmItem
 import com.example.myalarmapp.alarm.ui.components.DismissBackground
 import com.example.myalarmapp.common.components.NavigationBottomBar
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -35,7 +33,7 @@ fun AlarmScreen(
     viewModel: AlarmViewModel = hiltViewModel(),
     navController: NavController,
 ) {
-    val alarms by viewModel.alarms.collectAsState()
+    val alarms by viewModel.items.collectAsState()
 
     Scaffold(
         bottomBar = { NavigationBottomBar(navController) },
@@ -45,7 +43,7 @@ fun AlarmScreen(
                 modifier = Modifier.clip(CircleShape)
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.alarm_add_24px),
+                    imageVector = Icons.Rounded.AlarmAdd,
                     contentDescription = null
                 )
             }
@@ -64,7 +62,7 @@ fun AlarmScreen(
                 val state = rememberSwipeToDismissBoxState(
                     confirmValueChange = { value ->
                         if (value == SwipeToDismissBoxValue.EndToStart) {
-                            viewModel.deleteAlarm(alarm)
+                            viewModel.deleteItem(alarm)
                             true
                         } else false
                     },
@@ -86,7 +84,7 @@ fun AlarmScreen(
                             )
                         }
                     ) { isChecked ->
-                        viewModel.updateAlarm(alarm.copy(isOn = isChecked))
+                        viewModel.updateItem(alarm.copy(isOn = isChecked))
                     }
                 }
             }

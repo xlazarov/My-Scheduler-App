@@ -24,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.myalarmapp.alarm.data.Alarm
-import com.example.myalarmapp.alarm.data.AlarmViewModel
 import com.example.myalarmapp.alarm.ui.components.AlarmSoundSetting
 import com.example.myalarmapp.alarm.ui.components.DaysToRepeatAlarm
 import com.example.myalarmapp.alarm.ui.components.TimePicker
@@ -50,7 +49,7 @@ fun SetAlarmScreen(
                 topBarTitle = alarm.title,
                 navController = navController
             ) {
-                if (!isNew) viewModel.deleteAlarm(alarm)
+                if (!isNew) viewModel.deleteItem(alarm)
                 navController.navigateUp()
             }
         },
@@ -59,7 +58,7 @@ fun SetAlarmScreen(
                 modifier = Modifier.clip(CircleShape),
                 onClick = {
                     if (!isNew) {
-                        viewModel.updateAlarm(
+                        viewModel.updateItem(
                             alarm.copy(
                                 hour = selectedHour,
                                 minute = selectedMinute,
@@ -69,7 +68,7 @@ fun SetAlarmScreen(
                             )
                         )
                     } else {
-                        viewModel.insertAlarm(
+                        viewModel.insertItem(
                             Alarm(
                                 hour = selectedHour,
                                 minute = selectedMinute,
