@@ -1,4 +1,4 @@
-package com.example.myalarmapp.common
+package com.example.myalarmapp.alarm.db
 
 import androidx.room.TypeConverter
 
